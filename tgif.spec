@@ -11,8 +11,6 @@ Source1:	%{name}.ap.ja
 URL:		http://bourbon.usc.edu:8001/tgif/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define		_prefix		/usr/X11R6
-%define		_mandir		%{_prefix}/man
 
 %description
 tgif is a drawing packages for X. It has better text and object

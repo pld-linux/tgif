@@ -26,8 +26,6 @@ CFLAGS="$RPM_OPT_FLAGS" LDFLAGS="-s" \
 	--prefix=%{_prefix}
 make
 
-%find_lang tgif
-
 %install
 rm -rf $RPM_BUILD_ROOT
 
@@ -39,6 +37,8 @@ mv $RPM_BUILD_ROOT%{_datadir}/tgif/tgif.Xdefaults \
 	$RPM_BUILD_ROOT%{_libdir}/X11/app-defaults/Tgif
 gzip -9fn $RPM_BUILD_ROOT%{_mandir}/man1/* \
 	README HISTORY Copyright
+
+%find_lang tgif
 
 %clean
 rm -rf $RPM_BUILD_ROOT

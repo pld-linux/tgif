@@ -6,9 +6,6 @@ Version:	4.1.40
 Release:	1
 License:	custom
 Group:		X11/Applications/Graphics
-Group(de):	X11/Applikationen/Grafik
-Group(pl):	X11/Aplikacje/Grafika
-Group(pt):	X11/Aplicações/Gráficos
 Source0:	ftp://bourbon.cs.umd.edu/pub/tgif/%{name}-%{version}.tar.gz
 Source1:	%{name}.ap.ja
 URL:		http://bourbon.cs.umd.edu:8001/tgif/

@@ -31,7 +31,7 @@ rm -rf $RPM_BUILD_ROOT
 
 install -d $RPM_BUILD_ROOT%{_libdir}/X11/app-defaults
 
-make DESTDIR="$RPM_BUILD_ROOT" install
+%{__make} DESTDIR="$RPM_BUILD_ROOT" install
 
 mv $RPM_BUILD_ROOT%{_datadir}/tgif/tgif.Xdefaults \
 	$RPM_BUILD_ROOT%{_libdir}/X11/app-defaults/Tgif

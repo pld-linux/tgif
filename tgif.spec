@@ -3,7 +3,7 @@ Summary(pl):	tgif - pakiet do tworzenia grafiki 2D
 Summary(ja):	対話的 2 次元描画を容易にする Xlib に基づいた X11 クライアント
 Name:		tgif
 Version:	4.1.42
-Release:	1
+Release:	2
 License:	QPL
 Group:		X11/Applications/Graphics
 Source0:	ftp://bourbon.usc.edu/pub/tgif/%{name}-QPL-%{version}.tar.gz
@@ -35,14 +35,14 @@ Tgif は対話的な 2 次元描画を容易にする Xlib に基づいた X11
 rm -rf Tgif.tmpl
 cp -f Tgif.tmpl-linux Tgif.tmpl
 xmkmf
-%{__make} MOREDEFINES="-DOVERTHESPOT -DUSE_XT_INITIALIZE -D_ENABLE_NLS \
-	-DPRINT_CMD=\\\"lpr\\\" -DA4PAPER" TGIFDIR=%{_datadir}/tgif \
-	LOCAL_LIBRARIES="-lXmu -lXt -lX11" tgif
+%{__make} tgif \
+	MOREDEFINES="-DOVERTHESPOT -DUSE_XT_INITIALIZE -D_ENABLE_NLS \
+	-DPRINT_CMD=\\\"lpr\\\" -DA4PAPER" TGIFDIR="%{_datadir}/tgif" \
+	LOCAL_LIBRARIES="-lXmu -lXt -lX11" \
+	CDEBUGFLAGS="%{rpmcflags}"
 
 cd po
-xmkmf
-%{__make} Makefile
-%{__make} Makefiles
+xmkmf -a
 %{__make} depend
 %{__make} all
 cd ..

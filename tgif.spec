@@ -40,7 +40,7 @@ xmkmf
 	LOCAL_LIBRARIES="-lXmu -lXt -lX11" tgif
 
 cd po
-xmkmf 
+xmkmf
 %{__make} Makefile
 %{__make} Makefiles
 %{__make} depend
@@ -59,7 +59,7 @@ install *.obj $RPM_BUILD_ROOT%{_datadir}/tgif
 
 mv -f $RPM_BUILD_ROOT%{_datadir}/tgif/tgif.Xdefaults \
 	$RPM_BUILD_ROOT%{_libdir}/X11/app-defaults/Tgif
-install %{SOURCE1} $RPM_BUILD_ROOT%{_libdir}/X11/ja/app-defaults/Tgif 
+install %{SOURCE1} $RPM_BUILD_ROOT%{_libdir}/X11/ja/app-defaults/Tgif
 gzip -9fn README HISTORY Copyright
 
 %find_lang %{name}

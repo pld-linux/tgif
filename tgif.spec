@@ -60,7 +60,6 @@ install *.obj $RPM_BUILD_ROOT%{_datadir}/tgif
 mv -f $RPM_BUILD_ROOT%{_datadir}/tgif/tgif.Xdefaults \
 	$RPM_BUILD_ROOT%{_libdir}/X11/app-defaults/Tgif
 install %{SOURCE1} $RPM_BUILD_ROOT%{_libdir}/X11/ja/app-defaults/Tgif
-gzip -9fn README HISTORY Copyright
 
 %find_lang %{name}
 
@@ -69,7 +68,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc {README,HISTORY,Copyright}.gz
+%doc README HISTORY Copyright
 %attr(755,root,root) %{_bindir}/tgif
 %{_datadir}/tgif
 %{_mandir}/man1/*

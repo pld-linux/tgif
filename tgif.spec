@@ -7,6 +7,7 @@ Release:	2
 License:	QPL
 Group:		X11/Applications/Graphics
 Source0:	ftp://bourbon.usc.edu/pub/tgif/%{name}-QPL-%{version}.tar.gz
+# Source0-md5:	83b1cd01b1570fbf71ea5994af87f42e
 Source1:	%{name}.ap.ja
 URL:		http://bourbon.usc.edu:8001/tgif/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)

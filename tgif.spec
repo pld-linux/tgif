@@ -13,7 +13,7 @@ Patch0:		%{name}-po.patch
 URL:		http://bourbon.usc.edu:8001/tgif/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define		appdefsdir	/usr/X11R6/lib/X11/app-defaults
+%define		_appdefsdir	/usr/X11R6/lib/X11/app-defaults
 
 %description
 tgif is a drawing packages for X. It has better text and object
@@ -52,7 +52,7 @@ cd ..
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{appdefsdir}/ja/Tgif
+install -d $RPM_BUILD_ROOT%{_appdefsdir}/ja/Tgif
 
 %{__make} install install.man \
 	DESTDIR=$RPM_BUILD_ROOT \
@@ -66,8 +66,8 @@ install *.obj $RPM_BUILD_ROOT%{_datadir}/tgif
 	DESTDIR=$RPM_BUILD_ROOT
 
 mv -f $RPM_BUILD_ROOT%{_datadir}/tgif/tgif.Xdefaults \
-	$RPM_BUILD_ROOT%{appdefsdir}/Tgif
-install %{SOURCE1} $RPM_BUILD_ROOT%{appdefsdir}/ja/Tgif
+	$RPM_BUILD_ROOT%{_appdefsdir}/Tgif
+install %{SOURCE1} $RPM_BUILD_ROOT%{_appdefsdir}/ja/Tgif
 
 %find_lang %{name}
 
@@ -80,5 +80,5 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/tgif
 %{_datadir}/tgif
 %{_mandir}/man1/*
-%{appdefsdir}/Tgif
-%lang(ja) %{appdefsdir}/ja/Tgif
+%{_appdefsdir}/Tgif
+%lang(ja) %{_appdefsdir}/ja/Tgif

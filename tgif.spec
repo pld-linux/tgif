@@ -1,12 +1,12 @@
 Summary:	tgif drawing package
 Summary(pl):	tgif - pakiet do tworzenia grafiki 2D
 Name:		tgif
-Version:	4.1.7
+Version:	4.1.8
 Release:	1
 Copyright:	custom
 Group:		X11/Applications/Graphics
 Group(pl):	X11/Aplikacje/Grafika
-Source:		ftp://ftp.x.org/contrib/applications/tgif/%{name}-%{version}.tar.gz
+Source:		ftp://bourbon.cs.umd.edu/pub/tgif/%{name}-%{version}.tar.gz
 Patch:		tgif-config.patch
 URL:		http://bourbon.cs.umd.edu:8001/tgif/
 Buildroot:	/tmp/%{name}-%{version}-root

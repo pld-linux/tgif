@@ -1,7 +1,7 @@
 Summary:	tgif drawing package
 Summary(pl):	tgif - pakiet do tworzenia grafiki 2D
 Name:		tgif
-Version:	4.1.15
+Version:	4.1.16
 Release:	1
 Copyright:	custom
 Group:		X11/Applications/Graphics

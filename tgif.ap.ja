@@ -1,0 +1,57 @@
+!
+! Resource to input Japanese by kinput2 or skkinput.
+!
+
+! for fixed fonts
+Tgif.SquareDoubleByteFonts: \n\
+-*-fixed-medium-r-*--%d-*-*-*-*-*-jisx0208.1983-*,H,Ryumin-Light-EUC-H\n\
+-*-fixed-medium-r-*--%d-*-*-*-*-*-jisx0208.1983-*,H,Ryumin-Light-EUC-H\n\
+-*-fixed-medium-r-*--%d-*-*-*-*-*-jisx0208.1983-*,H,Ryumin-Light-EUC-H\n\
+-*-fixed-medium-r-*--%d-*-*-*-*-*-jisx0208.1983-*,H,Ryumin-Light-EUC-H\n\
+\n\
+-*-fixed-bold-r-*--%d-*-*-*-*-*-jisx0208.1983-*,H,GothicBBB-Medium-EUC-H\n\
+-*-fixed-bold-r-*--%d-*-*-*-*-*-jisx0208.1983-*,H,GothicBBB-Medium-EUC-H\n\
+-*-fixed-bold-r-*--%d-*-*-*-*-*-jisx0208.1983-*,H,GothicBBB-Medium-EUC-H\n\
+-*-fixed-bold-r-*--%d-*-*-*-*-*-jisx0208.1983-*,H,GothicBBB-Medium-EUC-H\n\
+\n\
+-*-fixed-medium-r-*--%d-*-*-*-*-*-jisx0208.1983-*,V,Ryumin-Light-EUC-V\n\
+-*-fixed-medium-r-*--%d-*-*-*-*-*-jisx0208.1983-*,V,Ryumin-Light-EUC-V\n\
+-*-fixed-medium-r-*--%d-*-*-*-*-*-jisx0208.1983-*,V,Ryumin-Light-EUC-V\n\
+-*-fixed-medium-r-*--%d-*-*-*-*-*-jisx0208.1983-*,V,Ryumin-Light-EUC-V\n\
+\n\
+-*-fixed-bold-r-*--%d-*-*-*-*-*-jisx0208.1983-*,V,GothicBBB-Medium-EUC-V\n\
+-*-fixed-bold-r-*--%d-*-*-*-*-*-jisx0208.1983-*,V,GothicBBB-Medium-EUC-V\n\
+-*-fixed-bold-r-*--%d-*-*-*-*-*-jisx0208.1983-*,V,GothicBBB-Medium-EUC-V\n\
+-*-fixed-bold-r-*--%d-*-*-*-*-*-jisx0208.1983-*,V,GothicBBB-Medium-EUC-V
+
+! for TrueType fonts
+!Tgif.SquareDoubleByteFonts: \n\
+!-*-mincho-medium-r-*--%d-*-*-*-*-*-jisx0208.1983-*,H,Ryumin-Light-EUC-H\n\
+!-*-mincho-medium-r-*--%d-*-*-*-*-*-jisx0208.1983-*,H,Ryumin-Light-EUC-H\n\
+!-*-mincho-medium-r-*--%d-*-*-*-*-*-jisx0208.1983-*,H,Ryumin-Light-EUC-H\n\
+!-*-mincho-medium-r-*--%d-*-*-*-*-*-jisx0208.1983-*,H,Ryumin-Light-EUC-H\n\
+!\n\
+!-*-gothic-bold-r-*--%d-*-*-*-*-*-jisx0208.1983-*,H,GothicBBB-Medium-EUC-H\n\
+!-*-gothic-bold-r-*--%d-*-*-*-*-*-jisx0208.1983-*,H,GothicBBB-Medium-EUC-H\n\
+!-*-gothic-bold-r-*--%d-*-*-*-*-*-jisx0208.1983-*,H,GothicBBB-Medium-EUC-H\n\
+!-*-gothic-bold-r-*--%d-*-*-*-*-*-jisx0208.1983-*,H,GothicBBB-Medium-EUC-H\n\
+!\n\
+!-*-mincho-medium-r-*--%d-*-*-*-*-*-jisx0208.1983-*,V,Ryumin-Light-EUC-V\n\
+!-*-mincho-medium-r-*--%d-*-*-*-*-*-jisx0208.1983-*,V,Ryumin-Light-EUC-V\n\
+!-*-mincho-medium-r-*--%d-*-*-*-*-*-jisx0208.1983-*,V,Ryumin-Light-EUC-V\n\
+!-*-mincho-medium-r-*--%d-*-*-*-*-*-jisx0208.1983-*,V,Ryumin-Light-EUC-V\n\
+!\n\
+!-*-gothic-bold-r-*--%d-*-*-*-*-*-jisx0208.1983-*,V,GothicBBB-Medium-EUC-V\n\
+!-*-gothic-bold-r-*--%d-*-*-*-*-*-jisx0208.1983-*,V,GothicBBB-Medium-EUC-V\n\
+!-*-gothic-bold-r-*--%d-*-*-*-*-*-jisx0208.1983-*,V,GothicBBB-Medium-EUC-V\n\
+!-*-gothic-bold-r-*--%d-*-*-*-*-*-jisx0208.1983-*,V,GothicBBB-Medium-EUC-V
+
+Tgif.DoubleByteInputMethod:    kinput2
+Tgif.PreeditType:              overthespot
+
+Tgif.UseNKF:			true
+Tgif.CopyAndPasteJIS:		true
+Tgif.Lang:			ja
+Tgif.ConvSelection:		_JAPANESE_CONVERSION
+Tgif.RyuminShowFontChar:		\314\300
+Tgif.GothicBBBShowFontChar:	\245\264

@@ -1,0 +1,33 @@
+diff -Nru tgif-4.1.7/Tgif.tmpl tgif-4.1.7.new/Tgif.tmpl
+--- tgif-4.1.7/Tgif.tmpl	Wed Apr 14 23:17:50 1999
++++ tgif-4.1.7.new/Tgif.tmpl	Fri Apr  9 23:19:04 1999
+@@ -47,8 +47,8 @@
+ XCOMM BINDIR	= /u/halfmoon/bin
+ XCOMM MANPATH	= /u/halfmoon/man
+ XCOMM TGIFDIR	= /u/halfmoon/lib/X11/tgif
+-TGIFDIR		= $(LIBDIR)/tgif
+-LOCALEDIR	= /usr/share/locale
++TGIFDIR		= /usr/X11R6/share/tgif
++LOCALEDIR	= /usr/X11R6/share/locale
+ DIRDEFINES	= -DTGIF_PATH=\"$(TGIFDIR)\" -DPSFILE_MOD=0664 \@@\
+                   -DLOCALEDIR=\"$(LOCALEDIR)\" \@@\
+                   -DTELEPORT_ATTR=\"warp_to=\" -DTMP_DIR=\"/tmp/\" \@@\
+@@ -58,7 +58,7 @@
+                   -DOBJ_FILE_EXT=\"obj\" -DSYM_FILE_EXT=\"sym\" \@@\
+                   -DTEXT_FILE_EXT=\"txt\" -DPIN_FILE_EXT=\"pin\"
+ MISCDEFINES	= -D_BACKGROUND_DONT_FORK -D_USE_XDRAWPOINT_TO_PUT_A_POINT
+-MOREDEFINES	=
++MOREDEFINES	= -D_ENABLE_NLS
+ 
+ XCOMM ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ XCOMM Please see Imakefile for more defines to be added to MOREDEFINES above
+diff -Nru tgif-4.1.7/po/Po.tmpl tgif-4.1.7.new/po/Po.tmpl
+--- tgif-4.1.7/po/Po.tmpl	Sat Apr  3 20:27:53 1999
++++ tgif-4.1.7.new/po/Po.tmpl	Thu Apr 15 00:18:35 1999
+@@ -8,5 +8,5 @@
+ MKINSTALLDIRS	= install -d
+ 
+ DESTDIR		=
+-SYSNLSDIR	= /usr/share/locale
++SYSNLSDIR	= /usr/X11R6/share/locale
+ NLSDIR		= $(DESTDIR)$(SYSNLSDIR)

@@ -37,7 +37,8 @@ cp -f Tgif.tmpl-linux Tgif.tmpl
 xmkmf
 %{__make} tgif \
 	MOREDEFINES="-DOVERTHESPOT -DUSE_XT_INITIALIZE -D_ENABLE_NLS \
-	-DPRINT_CMD=\\\"lpr\\\" -DA4PAPER" TGIFDIR="%{_datadir}/tgif" \
+	-DPRINT_CMD=\\\"lpr\\\" -DA4PAPER" \
+	TGIFDIR="%{_datadir}/tgif" \
 	LOCAL_LIBRARIES="-lXmu -lXt -lX11" \
 	CDEBUGFLAGS="%{rpmcflags}"
 
@@ -49,13 +50,16 @@ cd ..
 
 %install
 rm -rf $RPM_BUILD_ROOT
-
 install -d $RPM_BUILD_ROOT%{_libdir}/X11/app-defaults/ja
 
-%{__make} DESTDIR="$RPM_BUILD_ROOT" TGIFDIR=%{_datadir}/tgif install install.man
+%{__make} install install.man \
+	DESTDIR=$RPM_BUILD_ROOT \
+	TGIFDIR=%{_datadir}/tgif
+
 install *.obj $RPM_BUILD_ROOT%{_datadir}/tgif
 
-%{__make} -C po DESTDIR="$RPM_BUILD_ROOT" install
+%{__make} -C po install \
+	DESTDIR=$RPM_BUILD_ROOT
 
 mv -f $RPM_BUILD_ROOT%{_datadir}/tgif/tgif.Xdefaults \
 	$RPM_BUILD_ROOT%{_libdir}/X11/app-defaults/Tgif

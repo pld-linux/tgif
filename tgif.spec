@@ -10,20 +10,27 @@ Source:		ftp://bourbon.cs.umd.edu/pub/tgif/%{name}-%{version}.tar.gz
 URL:		http://bourbon.cs.umd.edu:8001/tgif/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define _prefix /usr/X11R6
+%define		_prefix		/usr/X11R6
+%define		_mandir		%{_prefix}/man
 
 %description
 tgif is a drawing packages for X. It has better text and object support
 than xfig, but is a little different to use.  
+
+%description -l pl
+tgif jest programem do rysowania w 2D pod X Window. Ma lepsze wsparcie
+dla tekstu i obiektów ni¿ xfig, ale jest nieco trudniejszy w obs³udze.
 
 %prep
 %setup -q
 
 %build
 autoconf
-CFLAGS="$RPM_OPT_FLAGS" LDFLAGS="-s" \
+CFLAGS="%{rpmcflags}" LDFLAGS="%{rpmldflags}" \
 ./configure \
-	--prefix=%{_prefix}
+	--prefix=%{_prefix} \
+	--mandir=%{_mandir}
+
 %{__make}
 
 %install
@@ -33,10 +40,10 @@ install -d $RPM_BUILD_ROOT%{_libdir}/X11/app-defaults
 
 %{__make} DESTDIR="$RPM_BUILD_ROOT" install
 
-mv $RPM_BUILD_ROOT%{_datadir}/tgif/tgif.Xdefaults \
+mv -f $RPM_BUILD_ROOT%{_datadir}/tgif/tgif.Xdefaults \
 	$RPM_BUILD_ROOT%{_libdir}/X11/app-defaults/Tgif
-gzip -9fn $RPM_BUILD_ROOT%{_mandir}/man1/* \
-	README HISTORY Copyright
+
+gzip -9fn README HISTORY Copyright
 
 %find_lang %{name}
 

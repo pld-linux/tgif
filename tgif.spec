@@ -1,15 +1,16 @@
 Summary:	tgif drawing package
 Summary(pl):	tgif - pakiet do tworzenia grafiki 2D
 Name:		tgif
-Version:	4.1.8
+Version:	4.1.15
 Release:	1
 Copyright:	custom
 Group:		X11/Applications/Graphics
 Group(pl):	X11/Aplikacje/Grafika
 Source:		ftp://bourbon.cs.umd.edu/pub/tgif/%{name}-%{version}.tar.gz
-Patch:		tgif-config.patch
 URL:		http://bourbon.cs.umd.edu:8001/tgif/
 Buildroot:	/tmp/%{name}-%{version}-root
+
+%define _prefix /usr/X11R6
 
 %description
 tgif is a drawing packages for X. It has better text and object support
@@ -17,43 +18,46 @@ than xfig, but is a little different to use.
 
 %prep
 %setup -q
-%patch -p1
 
 %build
-xmkmf -a
-(cd po; xmkmf -a)
+autoconf
+CFLAGS="$RPM_OPT_FLAGS" LDFLAGS="-s" \
+./configure \
+	--prefix=%{_prefix}
+make
 
-make CDEBUGFLAGS="$RPM_OPT_FLAGS"
-make -C po
+%find_lang tgif
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-install -d $RPM_BUILD_ROOT/usr/X11R6/lib/X11/app-defaults
+install -d $RPM_BUILD_ROOT%{_libdir}/X11/app-defaults
 
 make DESTDIR="$RPM_BUILD_ROOT" install
-make DESTDIR="$RPM_BUILD_ROOT" install.man
-make DESTDIR="$RPM_BUILD_ROOT" -C po install
 
-mv $RPM_BUILD_ROOT/usr/X11R6/share/tgif/tgif.Xdefaults \
-	$RPM_BUILD_ROOT/usr/X11R6/lib/X11/app-defaults/Tgif
-gzip -9fn $RPM_BUILD_ROOT/usr/X11R6/man/man1/* \
+mv $RPM_BUILD_ROOT%{_datadir}/tgif/tgif.Xdefaults \
+	$RPM_BUILD_ROOT%{_libdir}/X11/app-defaults/Tgif
+gzip -9fn $RPM_BUILD_ROOT%{_mandir}/man1/* \
 	README HISTORY Copyright
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%files
+%files -f tgif.lang
 %defattr(644,root,root,755)
 %doc {README,HISTORY,Copyright}.gz
-%attr(755,root,root) /usr/X11R6/bin/tgif
-/usr/X11R6/share/tgif
-/usr/X11R6/lib/X11/app-defaults/Tgif
-/usr/X11R6/man/man1/*
+%attr(755,root,root) %{_bindir}/tgif
+%{_datadir}/tgif
+%{_mandir}/man1/*
 
-%lang(ja) /usr/X11R6/share/locale/ja/LC_MESSAGES/tgif.mo
+%{_libdir}/X11/app-defaults/Tgif
 
 %changelog
+* Tue Jun  8 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
+  [4.1.15-1]
+- added more rpm macros,
+- package can be now builded on systems FFHS 2.0 compliant.
+
 * Thu Apr 15 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
   [4.1.4-1]
 - moved data files for tgif to /usr/X11R6/share/tgif,

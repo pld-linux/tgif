@@ -3,11 +3,13 @@ Summary(pl):	tgif - pakiet do tworzenia grafiki 2D
 Summary(ja):	対話的 2 次元描画を容易にする Xlib に基づいた X11 クライアント
 Name:		tgif
 Version:	4.1.42
-Release:	2
+Release:	3
 License:	QPL
 Group:		X11/Applications/Graphics
 Source0:	ftp://bourbon.usc.edu/pub/tgif/%{name}-QPL-%{version}.tar.gz
+# Source0-md5:	83b1cd01b1570fbf71ea5994af87f42e
 Source1:	%{name}.ap.ja
+Patch0:		%{name}-po.patch
 URL:		http://bourbon.usc.edu:8001/tgif/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -30,6 +32,7 @@ Tgif は対話的な 2 次元描画を容易にする Xlib に基づいた X11
 
 %prep
 %setup -q -n %{name}-QPL-%{version}
+%patch0 -p1
 
 %build
 rm -rf Tgif.tmpl
@@ -50,7 +53,7 @@ cd ..
 %install
 rm -rf $RPM_BUILD_ROOT
 
-install -d $RPM_BUILD_ROOT%{_libdir}/X11/{,ja/}app-defaults
+install -d $RPM_BUILD_ROOT%{_libdir}/X11/app-defaults/ja
 
 %{__make} DESTDIR="$RPM_BUILD_ROOT" TGIFDIR=%{_datadir}/tgif install install.man
 install *.obj $RPM_BUILD_ROOT%{_datadir}/tgif
@@ -59,8 +62,7 @@ install *.obj $RPM_BUILD_ROOT%{_datadir}/tgif
 
 mv -f $RPM_BUILD_ROOT%{_datadir}/tgif/tgif.Xdefaults \
 	$RPM_BUILD_ROOT%{_libdir}/X11/app-defaults/Tgif
-install %{SOURCE1} $RPM_BUILD_ROOT%{_libdir}/X11/ja/app-defaults/Tgif
-gzip -9fn README HISTORY Copyright
+install %{SOURCE1} $RPM_BUILD_ROOT%{_libdir}/X11/app-defaults/ja/Tgif
 
 %find_lang %{name}
 
@@ -69,9 +71,9 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc {README,HISTORY,Copyright}.gz
+%doc README HISTORY Copyright
 %attr(755,root,root) %{_bindir}/tgif
 %{_datadir}/tgif
 %{_mandir}/man1/*
-
 %{_libdir}/X11/app-defaults/Tgif
+%lang(ja) %{_libdir}/X11/app-defaults/ja/Tgif

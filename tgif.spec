@@ -51,27 +51,3 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man1/*
 
 %{_libdir}/X11/app-defaults/Tgif
-
-%changelog
-* Tue Jun  8 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
-  [4.1.15-1]
-- added more rpm macros,
-- package can be now builded on systems FFHS 2.0 compliant.
-
-* Thu Apr 15 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
-  [4.1.4-1]
-- moved data files for tgif to /usr/X11R6/share/tgif,
-- enabled NLS support (added ja .mo file).
-
-* Fri Apr  9 1999 Artur Frysiak <wiget@pld.org.pl>
-- added full decription of files permision
-- gzipping doc
-- using DESTDIR in install
-- added Group(pl)
-
-* Sat Dec 13 1997 Jan Prikryl <prikryl@acm.org>
-Release 2: dependencies changed
-           i386 RPM linked against libc.so.6
-
-* Tue Aug 05 1997 Corey Minyard <minyard@acm.org>
-Initial version

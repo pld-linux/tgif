@@ -22,13 +22,3 @@
  msgid ""
  msgstr ""
  "Project-Id-Version: tgif-4.0.17\n"
---- tgif-QPL-4.1.42/po/ru/ru.po~	Sat Sep  6 01:38:08 2003
-+++ tgif-QPL-4.1.42/po/ru/ru.po	Sat Sep  6 01:38:08 2003
-@@ -2,7 +2,6 @@
- #
- # @(#)$Header$
- #
--#, fuzzy
- msgid ""
- msgstr ""
- "Project-Id-Version: tgif-4.0.17\n"

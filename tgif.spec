@@ -1,12 +1,14 @@
 Summary:	tgif drawing package
 Summary(pl):	tgif - pakiet do tworzenia grafiki 2D
+Summary(ja): 	ÂÐÏÃÅª 2 ¼¡¸µÉÁ²è¤òÍÆ°×¤Ë¤¹¤ë Xlib ¤Ë´ð¤Å¤¤¤¿ X11 ¥¯¥é¥¤¥¢¥ó¥È
 Name:		tgif
-Version:	4.1.16
+Version:	4.1.40
 Release:	1
 Copyright:	custom
 Group:		X11/Applications/Graphics
 Group(pl):	X11/Aplikacje/Grafika
-Source:		ftp://bourbon.cs.umd.edu/pub/tgif/%{name}-%{version}.tar.gz
+Source0:	ftp://bourbon.cs.umd.edu/pub/tgif/%{name}-%{version}.tar.gz
+Source1:	tgif.ap.ja
 URL:		http://bourbon.cs.umd.edu:8001/tgif/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -21,28 +23,45 @@ than xfig, but is a little different to use.
 tgif jest programem do rysowania w 2D pod X Window. Ma lepsze wsparcie
 dla tekstu i obiektów ni¿ xfig, ale jest nieco trudniejszy w obs³udze.
 
+%description -l ja
+Tgif ¤ÏÂÐÏÃÅª¤Ê 2 ¼¡¸µÉÁ²è¤òÍÆ°×¤Ë¤¹¤ë Xlib ¤Ë´ð¤Å¤¤¤¿ X11
+¥¯¥é¥¤¥¢¥ó¥È¤Ç¤¹¡£ÉÁ²è¤Î³¬ÁØ¹½Â¤¤ÈÉÁ²è¤Î½¸¹ç´Ö¤Î´ÊÃ±¤ÊÁàºî
+¤ò¥µ¥Ý¡¼¥È¤·¤Æ¤¤¤Þ¤¹¡£¤Þ¤¿ WWW ¤Î¥Ñ¥¤¥Ñ¡¼¡¦¥°¥é¥Õ¥£¥Ã¥¯¥¹
+(¤â¤·¤¯¤Ï¥Ï¥¤¥Ñ¡¼¡¦¥¹¥È¥é¥¯¥Á¥ã¡¼¥É¡¦¥°¥é¥Õ¥£¥Ã¥¯¥¹)¡¦¥Ö¥é
+¥¦¥¶¤Ç¤¹¡£
+
 %prep
 %setup -q
 
 %build
-autoconf
-CFLAGS="%{rpmcflags}" LDFLAGS="%{rpmldflags}" \
-./configure \
-	--prefix=%{_prefix} \
-	--mandir=%{_mandir}
+rm -rf Tgif.tmpl
+cp Tgif.tmpl-linux Tgif.tmpl
+xmkmf
+make MOREDEFINES="-DOVERTHESPOT -DUSE_XT_INITIALIZE -D_ENABLE_NLS \
+	-DPRINT_CMD=\\\"lpr\\\" -DA4PAPER" TGIFDIR=/usr/X11R6/share/tgif \
+	LOCAL_LIBRARIES="-lXmu -lXt -lX11" tgif
 
-%{__make}
+cd po
+xmkmf 
+make Makefile
+make Makefiles
+make depend
+make all
+cd ..
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-install -d $RPM_BUILD_ROOT%{_libdir}/X11/app-defaults
+install -d $RPM_BUILD_ROOT%{_libdir}/X11/{,ja/}app-defaults
 
-%{__make} DESTDIR="$RPM_BUILD_ROOT" install
+%{__make} DESTDIR="$RPM_BUILD_ROOT" TGIFDIR=/usr/X11R6/share/tgif install install.man
+install -m 644 *.obj $RPM_BUILD_ROOT%{_datadir}/tgif
+
+%{__make} -C po DESTDIR="$RPM_BUILD_ROOT" install
 
 mv -f $RPM_BUILD_ROOT%{_datadir}/tgif/tgif.Xdefaults \
 	$RPM_BUILD_ROOT%{_libdir}/X11/app-defaults/Tgif
-
+install %{SOURCE1} $RPM_BUILD_ROOT%{_libdir}/X11/ja/app-defaults/Tgif 
 gzip -9fn README HISTORY Copyright
 
 %find_lang %{name}

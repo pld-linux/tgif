@@ -1,14 +1,16 @@
 Summary:	tgif drawing package
 Summary(pl):	tgif - pakiet do tworzenia grafiki 2D
-Summary(ja): 	ÂÐÏÃÅª 2 ¼¡¸µÉÁ²è¤òÍÆ°×¤Ë¤¹¤ë Xlib ¤Ë´ð¤Å¤¤¤¿ X11 ¥¯¥é¥¤¥¢¥ó¥È
+Summary(ja):	ÂÐÏÃÅª 2 ¼¡¸µÉÁ²è¤òÍÆ°×¤Ë¤¹¤ë Xlib ¤Ë´ð¤Å¤¤¤¿ X11 ¥¯¥é¥¤¥¢¥ó¥È
 Name:		tgif
 Version:	4.1.40
 Release:	1
-Copyright:	custom
+License:	custom
 Group:		X11/Applications/Graphics
+Group(de):	X11/Applikationen/Grafik
 Group(pl):	X11/Aplikacje/Grafika
+Group(pt):	X11/Aplicações/Gráficos
 Source0:	ftp://bourbon.cs.umd.edu/pub/tgif/%{name}-%{version}.tar.gz
-Source1:	tgif.ap.ja
+Source1:	%{name}.ap.ja
 URL:		http://bourbon.cs.umd.edu:8001/tgif/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -16,8 +18,8 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %define		_mandir		%{_prefix}/man
 
 %description
-tgif is a drawing packages for X. It has better text and object support
-than xfig, but is a little different to use.  
+tgif is a drawing packages for X. It has better text and object
+support than xfig, but is a little different to use.
 
 %description -l pl
 tgif jest programem do rysowania w 2D pod X Window. Ma lepsze wsparcie
@@ -27,18 +29,17 @@ dla tekstu i obiektów ni¿ xfig, ale jest nieco trudniejszy w obs³udze.
 Tgif ¤ÏÂÐÏÃÅª¤Ê 2 ¼¡¸µÉÁ²è¤òÍÆ°×¤Ë¤¹¤ë Xlib ¤Ë´ð¤Å¤¤¤¿ X11
 ¥¯¥é¥¤¥¢¥ó¥È¤Ç¤¹¡£ÉÁ²è¤Î³¬ÁØ¹½Â¤¤ÈÉÁ²è¤Î½¸¹ç´Ö¤Î´ÊÃ±¤ÊÁàºî
 ¤ò¥µ¥Ý¡¼¥È¤·¤Æ¤¤¤Þ¤¹¡£¤Þ¤¿ WWW ¤Î¥Ñ¥¤¥Ñ¡¼¡¦¥°¥é¥Õ¥£¥Ã¥¯¥¹
-(¤â¤·¤¯¤Ï¥Ï¥¤¥Ñ¡¼¡¦¥¹¥È¥é¥¯¥Á¥ã¡¼¥É¡¦¥°¥é¥Õ¥£¥Ã¥¯¥¹)¡¦¥Ö¥é
-¥¦¥¶¤Ç¤¹¡£
+(¤â¤·¤¯¤Ï¥Ï¥¤¥Ñ¡¼¡¦¥¹¥È¥é¥¯¥Á¥ã¡¼¥É¡¦¥°¥é¥Õ¥£¥Ã¥¯¥¹)¡¦¥Ö¥é ¥¦¥¶¤Ç¤¹¡£
 
 %prep
 %setup -q
 
 %build
 rm -rf Tgif.tmpl
-cp Tgif.tmpl-linux Tgif.tmpl
+cp -f Tgif.tmpl-linux Tgif.tmpl
 xmkmf
 %{__make} MOREDEFINES="-DOVERTHESPOT -DUSE_XT_INITIALIZE -D_ENABLE_NLS \
-	-DPRINT_CMD=\\\"lpr\\\" -DA4PAPER" TGIFDIR=/usr/X11R6/share/tgif \
+	-DPRINT_CMD=\\\"lpr\\\" -DA4PAPER" TGIFDIR=%{_datadir}/tgif \
 	LOCAL_LIBRARIES="-lXmu -lXt -lX11" tgif
 
 cd po
@@ -54,8 +55,8 @@ rm -rf $RPM_BUILD_ROOT
 
 install -d $RPM_BUILD_ROOT%{_libdir}/X11/{,ja/}app-defaults
 
-%{__make} DESTDIR="$RPM_BUILD_ROOT" TGIFDIR=/usr/X11R6/share/tgif install install.man
-install -m 644 *.obj $RPM_BUILD_ROOT%{_datadir}/tgif
+%{__make} DESTDIR="$RPM_BUILD_ROOT" TGIFDIR=%{_datadir}/tgif install install.man
+install *.obj $RPM_BUILD_ROOT%{_datadir}/tgif
 
 %{__make} -C po DESTDIR="$RPM_BUILD_ROOT" install
 

@@ -24,7 +24,7 @@ autoconf
 CFLAGS="$RPM_OPT_FLAGS" LDFLAGS="-s" \
 ./configure \
 	--prefix=%{_prefix}
-make
+%{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT

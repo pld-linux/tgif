@@ -37,16 +37,16 @@ Tgif は対話的な 2 次元描画を容易にする Xlib に基づいた X11
 rm -rf Tgif.tmpl
 cp Tgif.tmpl-linux Tgif.tmpl
 xmkmf
-make MOREDEFINES="-DOVERTHESPOT -DUSE_XT_INITIALIZE -D_ENABLE_NLS \
+%{__make} MOREDEFINES="-DOVERTHESPOT -DUSE_XT_INITIALIZE -D_ENABLE_NLS \
 	-DPRINT_CMD=\\\"lpr\\\" -DA4PAPER" TGIFDIR=/usr/X11R6/share/tgif \
 	LOCAL_LIBRARIES="-lXmu -lXt -lX11" tgif
 
 cd po
 xmkmf 
-make Makefile
-make Makefiles
-make depend
-make all
+%{__make} Makefile
+%{__make} Makefiles
+%{__make} depend
+%{__make} all
 cd ..
 
 %install

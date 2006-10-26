@@ -2,18 +2,20 @@ Summary:	tgif drawing package
 Summary(pl):	tgif - pakiet do tworzenia grafiki 2D
 Summary(ja):	対話的 2 次元描画を容易にする Xlib に基づいた X11 クライアント
 Name:		tgif
-Version:	4.1.44
+Version:	4.1.45
 Release:	1
 License:	QPL
 Group:		X11/Applications/Graphics
 Source0:	ftp://bourbon.usc.edu/pub/tgif/%{name}-QPL-%{version}.tar.gz
-# Source0-md5:	4818d79d36c460e24d14a390ade371e9
+# Source0-md5:	5c1eba8291385c630b8099fa9b042455
 Source1:	%{name}.ap.ja
 Patch0:		%{name}-po.patch
-URL:		http://bourbon.usc.edu:8001/tgif/
+URL:		http://bourbon.usc.edu/tgif/
+BuildRequires:	xorg-cf-files
+BuildRequires:	xorg-lib-libXmu-devel
+BuildRequires:	xorg-util-imake
+Requires:	xorg-lib-libXt >= 1.0.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-
-%define		_appdefsdir	/usr/X11R6/lib/X11/app-defaults
 
 %description
 tgif is a drawing packages for X. It has better text and object
@@ -33,9 +35,9 @@ Tgif は対話的な 2 次元描画を容易にする Xlib に基づいた X11
 %setup -q -n %{name}-QPL-%{version}
 %patch0 -p1
 
-%build
-rm -rf Tgif.tmpl
 cp -f Tgif.tmpl-linux Tgif.tmpl
+
+%build
 xmkmf
 %{__make} tgif \
 	MOREDEFINES="-DOVERTHESPOT -DUSE_XT_INITIALIZE -D_ENABLE_NLS \
@@ -48,11 +50,10 @@ cd po
 xmkmf -a
 %{__make} depend
 %{__make} all
-cd ..
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{_appdefsdir}/ja/Tgif
+install -d $RPM_BUILD_ROOT%{_datadir}/X11{,/ja}/app-defaults
 
 %{__make} install install.man \
 	DESTDIR=$RPM_BUILD_ROOT \
@@ -66,8 +67,8 @@ install *.obj $RPM_BUILD_ROOT%{_datadir}/tgif
 	DESTDIR=$RPM_BUILD_ROOT
 
 mv -f $RPM_BUILD_ROOT%{_datadir}/tgif/tgif.Xdefaults \
-	$RPM_BUILD_ROOT%{_appdefsdir}/Tgif
-install %{SOURCE1} $RPM_BUILD_ROOT%{_appdefsdir}/ja/Tgif
+	$RPM_BUILD_ROOT%{_datadir}/X11/app-defaults/Tgif
+install %{SOURCE1} $RPM_BUILD_ROOT%{_datadir}/X11/ja/app-defaults/Tgif
 
 %find_lang %{name}
 
@@ -80,5 +81,5 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/tgif
 %{_datadir}/tgif
 %{_mandir}/man1/*
-%{_appdefsdir}/Tgif
-%lang(ja) %{_appdefsdir}/ja/Tgif
+%{_datadir}/X11/app-defaults/Tgif
+%lang(ja) %{_datadir}/X11/ja/app-defaults/Tgif

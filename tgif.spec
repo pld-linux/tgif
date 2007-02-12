@@ -1,6 +1,6 @@
 Summary:	tgif drawing package
-Summary(pl):	tgif - pakiet do tworzenia grafiki 2D
-Summary(ja):	ÂĞÏÃÅª 2 ¼¡¸µÉÁ²è¤òÍÆ°×¤Ë¤¹¤ë Xlib ¤Ë´ğ¤Å¤¤¤¿ X11 ¥¯¥é¥¤¥¢¥ó¥È
+Summary(pl.UTF-8):   tgif - pakiet do tworzenia grafiki 2D
+Summary(ja.UTF-8):   å¯¾è©±çš„ 2 æ¬¡å…ƒæç”»ã‚’å®¹æ˜“ã«ã™ã‚‹ Xlib ã«åŸºã¥ã„ãŸ X11 ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆ
 Name:		tgif
 Version:	4.1.45
 Release:	1
@@ -21,15 +21,15 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 tgif is a drawing packages for X. It has better text and object
 support than xfig, but is a little different to use.
 
-%description -l pl
+%description -l pl.UTF-8
 tgif jest programem do rysowania w 2D pod X Window. Ma lepsze wsparcie
-dla tekstu i obiektów ni¿ xfig, ale jest nieco trudniejszy w obs³udze.
+dla tekstu i obiektÃ³w niÅ¼ xfig, ale jest nieco trudniejszy w obsÅ‚udze.
 
-%description -l ja
-Tgif ¤ÏÂĞÏÃÅª¤Ê 2 ¼¡¸µÉÁ²è¤òÍÆ°×¤Ë¤¹¤ë Xlib ¤Ë´ğ¤Å¤¤¤¿ X11
-¥¯¥é¥¤¥¢¥ó¥È¤Ç¤¹¡£ÉÁ²è¤Î³¬ÁØ¹½Â¤¤ÈÉÁ²è¤Î½¸¹ç´Ö¤Î´ÊÃ±¤ÊÁàºî
-¤ò¥µ¥İ¡¼¥È¤·¤Æ¤¤¤Ş¤¹¡£¤Ş¤¿ WWW ¤Î¥Ñ¥¤¥Ñ¡¼¡¦¥°¥é¥Õ¥£¥Ã¥¯¥¹
-(¤â¤·¤¯¤Ï¥Ï¥¤¥Ñ¡¼¡¦¥¹¥È¥é¥¯¥Á¥ã¡¼¥É¡¦¥°¥é¥Õ¥£¥Ã¥¯¥¹)¡¦¥Ö¥é ¥¦¥¶¤Ç¤¹¡£
+%description -l ja.UTF-8
+Tgif ã¯å¯¾è©±çš„ãª 2 æ¬¡å…ƒæç”»ã‚’å®¹æ˜“ã«ã™ã‚‹ Xlib ã«åŸºã¥ã„ãŸ X11
+ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã§ã™ã€‚æç”»ã®éšå±¤æ§‹é€ ã¨æç”»ã®é›†åˆé–“ã®ç°¡å˜ãªæ“ä½œ
+ã‚’ã‚µãƒãƒ¼ãƒˆã—ã¦ã„ã¾ã™ã€‚ã¾ãŸ WWW ã®ãƒ‘ã‚¤ãƒ‘ãƒ¼ãƒ»ã‚°ãƒ©ãƒ•ã‚£ãƒƒã‚¯ã‚¹
+(ã‚‚ã—ãã¯ãƒã‚¤ãƒ‘ãƒ¼ãƒ»ã‚¹ãƒˆãƒ©ã‚¯ãƒãƒ£ãƒ¼ãƒ‰ãƒ»ã‚°ãƒ©ãƒ•ã‚£ãƒƒã‚¯ã‚¹)ãƒ»ãƒ–ãƒ© ã‚¦ã‚¶ã§ã™ã€‚
 
 %prep
 %setup -q -n %{name}-QPL-%{version}

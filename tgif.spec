@@ -46,6 +46,7 @@ cp -f Tgif.tmpl-linux Tgif.tmpl
 %build
 xmkmf
 %{__make} tgif \
+	CC="%{__cc}" \
 	MOREDEFINES="-DOVERTHESPOT -DUSE_XT_INITIALIZE -D_ENABLE_NLS \
 	-DPRINT_CMD=\\\"lpr\\\" -DA4PAPER" \
 	TGIFDIR="%{_datadir}/tgif" \

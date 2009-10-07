@@ -1,10 +1,10 @@
 #
 # TODO: - put icons to /usr/share/icons/hicolor instead of /usr/share/tgif/hicolor
-#	- fix font opening 
+#	- fix font opening
 #
 Summary:	tgif drawing package
-Summary(pl.UTF-8):	tgif - pakiet do tworzenia grafiki 2D
 Summary(ja.UTF-8):	対話的 2 次元描画を容易にする Xlib に基づいた X11 クライアント
+Summary(pl.UTF-8):	tgif - pakiet do tworzenia grafiki 2D
 Name:		tgif
 Version:	4.2
 Release:	0.1

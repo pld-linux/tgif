@@ -1,11 +1,8 @@
---- tgif-QPL-4.2/Imakefile~	2009-10-07 16:02:29.000000000 +0200
-+++ tgif-QPL-4.2/Imakefile	2009-10-07 16:02:19.000000000 +0200
-@@ -344,7 +344,14 @@
-  * NormalRelocatableTarget(frontend11,$(FRONTENDOBJS))
-  */
+--- tgif-QPL-4.2.1/Imakefile~	2009-10-08 17:27:51.000000000 +0000
++++ tgif-QPL-4.2.1/Imakefile	2009-10-14 15:27:45.000000000 +0000
+@@ -347,6 +347,11 @@
+ ICONSDIR =icons/
  
-+ICONSDIR =icons/
-+
  MakeDirectories(install,$(TGIFDIR))
 +MakeDirectories(install,$(TGIFDIR)/hicolor/22x22)
 +MakeDirectories(install,$(TGIFDIR)/hicolor/32x32)
@@ -15,11 +12,3 @@
  InstallNonExec(tgif.Xdefaults,$(TGIFDIR))
  InstallNonExec(tgificon.eps,$(TGIFDIR))
  InstallNonExec(tgificon.obj,$(TGIFDIR))
-@@ -379,7 +386,6 @@
- 
- SPICEDIR =spice/
- XBMDIR =xbm/
--ICONSDIR =icons/
- RMCASTDIR_QPL =rmcast-qpl
- RMCASTDIR_GPL =rmcast-gpl
- 

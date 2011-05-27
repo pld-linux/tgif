@@ -6,12 +6,12 @@ Summary:	tgif drawing package
 Summary(ja.UTF-8):	対話的 2 次元描画を容易にする Xlib に基づいた X11 クライアント
 Summary(pl.UTF-8):	tgif - pakiet do tworzenia grafiki 2D
 Name:		tgif
-Version:	4.2.2
+Version:	4.2.3
 Release:	0.1
 License:	QPL
 Group:		X11/Applications/Graphics
 Source0:	ftp://bourbon.usc.edu/pub/tgif/%{name}-QPL-%{version}.tar.gz
-# Source0-md5:	8ec70553a1526fb6ee65cd4e81593363
+# Source0-md5:	5a24337b944c693a514ffe7eb3ded4b6
 Source1:	%{name}.ap.ja
 Patch0:		%{name}-po.patch
 URL:		http://bourbon.usc.edu/tgif/
@@ -85,6 +85,6 @@ rm -rf $RPM_BUILD_ROOT
 %doc README HISTORY Copyright
 %attr(755,root,root) %{_bindir}/tgif
 %{_datadir}/tgif
-%{_mandir}/man1/*
+%{_mandir}/man1/tgif.1*
 %{_datadir}/X11/app-defaults/Tgif
 %lang(ja) %{_datadir}/X11/ja/app-defaults/Tgif
